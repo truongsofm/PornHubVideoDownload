@@ -29,4 +29,10 @@ public class RequestController {
         return "videos";
     }
 
+    @ResponseBody
+    @PostMapping("/resolveVideo")
+    public Map<String, String> requestUriInterface(@RequestParam @NotBlank String uri) throws Exception {
+        return processUrlService.getVideoUrl(uri);
+    }
+
 }

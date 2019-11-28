@@ -106,7 +106,8 @@ public class ProcessUrl {
 
                 if (index != -1) {
                     // 里面含有null
-                    uriDataMap.put(videoQuality.substring(8), "解析此格式失败，请观看其他格式或重新解析！");
+                    uriDataMap.put(videoQuality.substring(8), "解析此格式失败，请观看其他格式或重新解析！" +
+                            "Parsing this format failed, watch another format or re-parse!");
                     continue;
                 }
 
@@ -114,7 +115,8 @@ public class ProcessUrl {
 
             } catch (NullPointerException e) {
 
-                uriDataMap.put(videoQuality.substring(8), "此视频不存在" + videoQuality + "格式！");
+                uriDataMap.put(videoQuality.substring(8), "此视频不存在 " + videoQuality.substring(8) + " 格式！"
+                        + "This video does not exist " + videoQuality.substring(8) + " Format!");
             }
         }
         // 释放连接
