@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>PornHub Video Uri Process</title>
+</head>
+<body>
+
+<div style="width: 100%;text-align: center;color: red">
+    <h1>将视频地址复制到浏览器打开即可</h1>
+</div>
+<br>
+
+<div th:each="video:${videos}" style="width: 100%;text-align: center">
+    <div th:text="${video.key}" style="color: red"/>
+    <div th:text="${video.value}"/>
+    <br>
+    <br>
+</div>
+
+
+<div style="text-align: center"><a href="index.html" style="color: red"><h2>返回</h2></a></div>
+
+</td>
+</body>
+</html>
