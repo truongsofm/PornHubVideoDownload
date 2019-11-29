@@ -24,7 +24,7 @@ TIPS
 ```java
     client.getHostConfiguration().setProxy("127.0.0.1", 1080);
 ```
-- 这里给大家一个测试用的视频地址（https://www.pornhub.com/view_video.php?viewkey=ph5c0491898480f),可以拿着这个地址去项目演示的页面中尝试
+- 这里给大家一个测试用的视频地址（https://www.pornhub.com/view_video.php?viewkey=ph5c0491898480f), 可以拿着这个地址去项目演示的页面中尝试
 
 
 ### 我的个人博客 
