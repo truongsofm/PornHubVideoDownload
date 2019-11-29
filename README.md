@@ -30,4 +30,6 @@ TIPS
 ### 我的个人博客 
  - www.guih.club
 
-### (English documentation)[https://github.com/Guih7/PornHubVideoDownload/blob/master/README_en.md]
+### [English documentation](https://github.com/Guih7/PornHubVideoDownload/blob/master/README_en.md)
+
+
