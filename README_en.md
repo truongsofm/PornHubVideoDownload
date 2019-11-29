@@ -27,3 +27,6 @@ client.getHostConfiguration (). setProxy ("127.0.0.1", 1080);
 - Here is a video address for testing (https://www.pornhub.com/view_video.php?viewkey=ph5c0491898480f), you can use this address to try it on the project demo page
 
 ### My personal blog: www.guih.club
+
+### [中文介绍](https://github.com/Guih7/PornHubVideoDownload/blob/master/README.md)
+
