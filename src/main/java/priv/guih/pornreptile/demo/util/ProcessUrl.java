@@ -19,13 +19,13 @@ public class ProcessUrl {
     private String[] videoQualities = new String[]{"quality_240p", "quality_480p", "quality_720p", "quality_1080p"};
 
     public Map<String, String> getAllVideo(String url) throws Exception {
-        Map<String, String> map = new HashMap<>(50);
+        Map<String, String> dataMap = new HashMap<>(50);
         Map<String, String> uriDataMap = new HashMap<>(4);
         StringBuilder s = new StringBuilder();
 
         HttpClient client = new HttpClient();
 
-//        client.getHostConfiguration().setProxy("127.0.0.1", 1080);
+        client.getHostConfiguration().setProxy("127.0.0.1", 1080);
         client.getHttpConnectionManager().getParams()
                 .setConnectionTimeout(30000);
 
@@ -42,6 +42,12 @@ public class ProcessUrl {
 
         // 返回体
         String responseBody = method.getResponseBodyAsString();
+
+        // 获取标题
+        int titleIndexStart = responseBody.indexOf("<title>");
+        int titleIndexEnd = responseBody.indexOf("</title>");
+        String videoTitle = responseBody.substring(titleIndexStart + 7, titleIndexEnd - 14);
+        uriDataMap.put("videoTitle", videoTitle);
 
         // 截取视频链接大概位置
         int firstStart = responseBody.indexOf("player_mp4_seek");
@@ -63,14 +69,14 @@ public class ProcessUrl {
 
             // 一些Value中是 ‘ “xxx”+“yyy” ’ 形式，去掉中间的加号。合在一起
             String mapValueEnd = mapValue.replace("\" + \"", "");
-            map.put(mapKey, mapValueEnd);
+            dataMap.put(mapKey, mapValueEnd);
         }
 
         // 获取240 480 720 1080视频地址，如果没有会报空指针异常
         for (String videoQuality : videoQualities) {
             try {
                 // 从map中获取对应视频清晰度的value
-                String videoValue = map.get(videoQuality);
+                String videoValue = dataMap.get(videoQuality);
 
                 // 将获取到的value中的注释删去
                 String removeComment = videoValue.replaceAll("/\\*\\s\\+\\s[A-Za-z0-9]{10,30}\\s\\+\\s\\*/", "");
@@ -80,13 +86,13 @@ public class ProcessUrl {
 
                 // 遍历数组。去map找对应的value
                 for (String value : urlKeys) {
-                    String s1 = map.get(value);
+                    String s1 = dataMap.get(value);
                     if (s1 == null) {
 
                         // 因为第一行哪里有换行,所以第一个会为null
                         String tempValue = "\n\t\t " + value;
 
-                        String s3 = map.get(tempValue);
+                        String s3 = dataMap.get(tempValue);
                         if (s3 != null) {
                             s.append(s3);
                             continue;

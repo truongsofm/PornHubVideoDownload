@@ -7,14 +7,19 @@
 <body>
 
 <div style="width: 100%;text-align: center;color: red">
-    <h1>将视频地址复制到浏览器打开即可</h1>
-    <h1> Copy the video address to your browser and open it </h1>
+    <h2>将视频地址复制到浏览器打开即可</h2>
+    <h2> Copy the video address to your browser and open it </h2>
 </div>
 <br>
 
-<div th:each="video:${videos}" style="width: 100%;text-align: center">
-    <div th:text="${video.key}" style="color: red"/>
-    <div th:text="${video.value}"/>
+<div style="color: red;width: 100%;text-align: center">视频标题</div>
+<div style="color: red;width: 100%;text-align: center">Video Title</div>
+<div th:text="${videoTitle}" style="text-align: center; width: 100%"/>
+<br>
+
+<div th:each="videoData:${videosDataMap}" style="width: 100%;text-align: center">
+    <div th:text="${videoData.key}" style="color: red"/>
+    <div th:text="${videoData.value}"/>
     <br>
     <br>
 </div>

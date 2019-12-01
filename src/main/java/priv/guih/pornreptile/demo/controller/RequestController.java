@@ -24,8 +24,10 @@ public class RequestController {
     @PostMapping("/url")
     public String requestUrl(@RequestParam @NotBlank String url, HttpServletRequest request) throws Exception {
 
-        Map<String, String> videoUrl = processUrlService.getVideoUrl(url);
-        request.setAttribute("videos", videoUrl);
+        Map<String, String> videoDataMap = processUrlService.getVideoUrl(url);
+        request.setAttribute("videoTitle", videoDataMap.get("videoTitle"));
+        request.setAttribute("videosDataMap", videoDataMap);
+        videoDataMap.remove("videoTitle");
         return "videos";
     }
 
